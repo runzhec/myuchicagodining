@@ -42,8 +42,8 @@ body {
   cursor: pointer;
   font-size: 16px; /* Makes the text larger */
   font-family: "Nunito", sans-serif;
-  position: relative; /* Needed for the absolute positioning of the pseudo-element */
-  overflow: hidden; /* Ensures the pseudo-element does not extend outside the button */
+  position: relative;
+  overflow: hidden;
 }
 
 .maroon-bar button::after {
@@ -52,14 +52,14 @@ body {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  height: 2px; /* Height of the underline */
-  width: 0%; /* Initial width of the underline */
-  background-color: white; /* Color of the underline */
+  height: 2px;
+  width: 0%;
+  background-color: white;
   transition: width 0.5s ease; /* Animation duration and easing */
 }
 
 .maroon-bar button:hover::after {
-  width: 100%; /* Final width of the underline */
+  width: 100%;
   animation: drawLine 0.5s ease forwards; /* Uses the keyframe animation */
 }
 
@@ -104,13 +104,12 @@ body {
   margin-top: 15px;
 }
 
-/* Default styling: side by side */
 .responsive-container {
   display: flex;
-  flex-direction: row; /* Lay out children side by side */
-  justify-content: center; /* Center children horizontally */
-  align-items: start; /* Align children to the start of the cross axis */
-  gap: 20px; /* Optional: adds some space between the children */
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+  gap: 20px;
 }
 
 .responsive-container > div {
@@ -121,7 +120,7 @@ body {
 /* Responsive styling: one on top of another for screens narrower than 768px */
 @media (max-width: 768px) {
   .responsive-container {
-    flex-direction: column; /* Stack children vertically */
+    flex-direction: column;
   }
 }
 
@@ -146,4 +145,17 @@ button {
 
 button:hover {
   background-color: darkred; /* Darker maroon shade on hover for a subtle effect */
+}
+
+.circular-div {
+  width: 200px; /* Adjust based on your needs */
+  height: 30px; /* This should be equal to the width to make a perfect circle */
+  border-radius: 20px; /* Rounds the corners of the button */
+  background-color: maroon; /* Background color of the div */
+  color: white; /* Text color */
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
+  text-align: center;
+  font-family: "Nunito", sans-serif;
 }

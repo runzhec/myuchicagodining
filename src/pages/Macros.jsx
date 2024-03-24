@@ -45,6 +45,14 @@ function calculateNutrientIntake(age, weight, heightFt, heightIn, sex) {
   };
 }
 
+function TotalMacrosDisplay({ macro, quant }) {
+  return (
+    <div class="circular-div">
+      Total {macro}: {quant}
+    </div>
+  );
+}
+
 export default function Macros({ selectedFoods, setSelectedFoods }) {
   const cols = getSelectedColumns(setSelectedFoods);
   const [rows, updateRows] = useState(getSelectedRows(selectedFoods));
@@ -100,37 +108,54 @@ export default function Macros({ selectedFoods, setSelectedFoods }) {
         </>
       )}
       {!showStats && (
-        <div className="responsive-container">
-          {rows.length > 0 && (
-            <div>
-              <SelectedGrid rows={rows} columns={cols} />
-            </div>
-          )}
-          <div>
+        <>
+          <div
+            className="responsive-container"
+            style={{ marginBottom: "50px" }}
+          >
+            <TotalMacrosDisplay
+              macro={"Calories"}
+              quant={totalMacros["calories"]}
+            />
+            <TotalMacrosDisplay
+              macro={"Protein"}
+              quant={totalMacros["protein"]}
+            />
+            <TotalMacrosDisplay macro={"Fat"} quant={totalMacros["fat"]} />
+            <TotalMacrosDisplay macro={"Carbs"} quant={totalMacros["carbs"]} />
+          </div>
+          <div className="responsive-container">
             {rows.length > 0 && (
-              <Pie
+              <div>
+                <SelectedGrid rows={rows} columns={cols} />
+              </div>
+            )}
+            <div>
+              {rows.length > 0 && (
+                <Pie
+                  fat={totalMacros["fat"]}
+                  protein={totalMacros["protein"]}
+                  carbs={totalMacros["carbs"]}
+                />
+              )}
+              {rows.length === 0 && (
+                <div className="title-main">
+                  <h3 style={{ textAlign: "center" }}>
+                    Please make food selections in home page to see your macros
+                  </h3>
+                </div>
+              )}
+              <Bars
                 fat={totalMacros["fat"]}
                 protein={totalMacros["protein"]}
                 carbs={totalMacros["carbs"]}
+                idealFat={idealMacros["fat"]}
+                idealProtein={idealMacros["protein"]}
+                idealCarbs={idealMacros["carbs"]}
               />
-            )}
-            {rows.length === 0 && (
-              <div className="title-main">
-                <h3 style={{ textAlign: "center" }}>
-                  Please make food selections in home page to see your macros
-                </h3>
-              </div>
-            )}
-            <Bars
-              fat={totalMacros["fat"]}
-              protein={totalMacros["protein"]}
-              carbs={totalMacros["carbs"]}
-              idealFat={idealMacros["fat"]}
-              idealProtein={idealMacros["protein"]}
-              idealCarbs={idealMacros["carbs"]}
-            />
+            </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );

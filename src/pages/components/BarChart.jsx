@@ -15,7 +15,7 @@ export default function BasicBars({
   };
 
   return (
-    <div style={{ marginTop: "100px" }}>
+    <div style={{ marginTop: "60px" }}>
       <BarChart
         xAxis={[
           {

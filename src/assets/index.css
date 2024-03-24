@@ -96,6 +96,43 @@ body {
   margin-top: 25px;
 }
 
+.selected-grid {
+  height: 60%;
+  width: 50%;
+  min-width: 364px;
+  margin: 0 12px;
+  margin-top: 15px;
+}
+
+/* Default styling: side by side */
+.responsive-container {
+  display: flex;
+  flex-direction: row; /* Lay out children side by side */
+  justify-content: center; /* Center children horizontally */
+  align-items: start; /* Align children to the start of the cross axis */
+  gap: 20px; /* Optional: adds some space between the children */
+}
+
+.responsive-container > div {
+  width: 50%;
+}
+
+.responsive-container .selected-grid {
+  height: 60%;
+  max-height: 600px; /* Example maximum height */
+  width: 50%;
+  min-width: 364px;
+  margin: 0 12px;
+  margin-top: 15px;
+}
+
+/* Responsive styling: one on top of another for screens narrower than 768px */
+@media (max-width: 768px) {
+  .responsive-container {
+    flex-direction: column; /* Stack children vertically */
+  }
+}
+
 .future-grid {
   height: 70%;
   width: 65%;

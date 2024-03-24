@@ -20,14 +20,13 @@ export default function SelectedGrid({ rows = [], columns }) {
   return (
     <div className="selected-grid">
       {" "}
-      {/* Ensure this div has the class applied */}
       <ThemeProvider theme={theme}>
         <DataGrid
           rows={rows}
           columns={columns}
           getRowHeight={() => "auto"}
           sx={{
-            height: 1, // This makes DataGrid take the full height of its parent div
+            height: 1,
             "&.MuiDataGrid-root--densityStandard .MuiDataGrid-cell": {
               py: "22px",
             },

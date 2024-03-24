@@ -3,7 +3,14 @@ import NavBar from "./components/NavBar.jsx";
 import uniqueMeals from "./utils/uniqueMealsArray.js";
 import { useTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
-import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import {
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Paper,
+} from "@mui/material";
+import TextField from "@mui/material/TextField";
 import FutureGrid from "./components/FutureGrid.jsx";
 import fetchFutureAvailability from "./utils/predictPopulateGrid.js";
 
@@ -68,36 +75,85 @@ export default function Predict() {
         <div className="title-main">
           <h1>Future Food Availability Search</h1>
         </div>
-        <input
-          type="text"
-          placeholder="Search for foods..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-          onFocus={() => setShowSearchResults(true)}
+        <div
           style={{
-            margin: "10px 0",
-            padding: "10px",
-            width: "calc(100% - 20px)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: "20px",
           }}
-        />
-        {searchTerm && showSearchResults && (
-          <List>
-            {uniqueMeals
-              .filter((meal) =>
-                meal.toLowerCase().includes(searchTerm.toLowerCase())
-              )
-              .map((meal, index) => (
-                <ListItem disablePadding key={index}>
-                  <ListItemButton onClick={() => handleSearchSelect(meal)}>
-                    <ListItemText primary={meal} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-          </List>
-        )}
-        {availability.length > 0 && ( // Only show the FutureGrid if there are items in the availability array
-          <FutureGrid rows={availability} columns={columns} />
-        )}
+        >
+          <TextField
+            id="outlined-search"
+            label="Search for foods..."
+            type="search"
+            variant="outlined"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            onFocus={() => setShowSearchResults(true)}
+            style={{
+              width: "40%",
+              minWidth: "350px",
+              borderRadius: "20px",
+              fontFamily: "Nunito, sans-serif",
+            }}
+            InputProps={{
+              style: {
+                borderRadius: "20px",
+                fontFamily: "Nunito, sans-serif",
+              },
+            }}
+            InputLabelProps={{
+              style: {
+                fontFamily: "Nunito, sans-serif",
+              },
+            }}
+          />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: "20px",
+          }}
+        >
+          {searchTerm && showSearchResults && (
+            <Paper
+              style={{
+                maxHeight: 400,
+                overflow: "auto",
+                padding: "10px",
+                borderRadius: "20px",
+                boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+                width: "45%",
+                minWidth: "350px",
+              }}
+            >
+              <List dense component="nav" aria-label="search results">
+                {uniqueMeals
+                  .filter((meal) =>
+                    meal.toLowerCase().includes(searchTerm.toLowerCase())
+                  )
+                  .map((meal, index) => (
+                    <ListItem disablePadding key={index}>
+                      <ListItemButton onClick={() => handleSearchSelect(meal)}>
+                        <ListItemText
+                          primary={meal}
+                          primaryTypographyProps={{
+                            style: { fontFamily: "Nunito, sans-serif" },
+                          }}
+                        />
+                      </ListItemButton>
+                    </ListItem>
+                  ))}
+              </List>
+            </Paper>
+          )}
+          {availability.length > 0 && (
+            <FutureGrid rows={availability} columns={columns} />
+          )}
+        </div>
       </div>
     </ThemeProvider>
   );

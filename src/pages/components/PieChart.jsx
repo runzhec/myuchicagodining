@@ -10,7 +10,6 @@ function calculatePercentage(macro, total) {
   // Calculate the percentage
   let percentage = (macro / total) * 100;
 
-  // Round to the nearest tenth and convert to number
   return parseFloat(percentage.toFixed(1));
 }
 

@@ -1,4 +1,3 @@
-// In a new file, e.g., AppWrapper.js
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";

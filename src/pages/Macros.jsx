@@ -13,7 +13,6 @@ import Bars from "./components/BarChart.jsx";
 function calculateNutrientIntake(age, weight, heightFt, heightIn, sex) {
   let height = heightFt * 12 + heightIn;
 
-  // Convert weight from pounds to kg, and height from inches to cm
   weight = weight * 0.453592;
   height = height * 2.54;
 
@@ -26,7 +25,6 @@ function calculateNutrientIntake(age, weight, heightFt, heightIn, sex) {
   // Assume a moderate activity level with a multiplier of 1.55 for Total Daily Energy Expenditure (TDEE)
   let calories = Math.round(BMR * 1.55);
 
-  // Calculate macronutrients based on updated guidelines
   let proteinPercent = 0.15; // Averaging recommended range to 15% of total calories
   let fatPercent = 0.3; // Middle of the recommended range for fat
   let carbsPercent = 1 - (proteinPercent + fatPercent); // Remainder for carbohydrates
@@ -87,7 +85,7 @@ export default function Macros({ selectedFoods, setSelectedFoods }) {
           <div className="title-main">
             <button onClick={() => setShowStats(false)}>Submit</button>
           </div>
-          <div className="title-main" style={{ marginBottom: "500px" }}>
+          <div className="title-main">
             <InputFieldGroup
               sex={sex}
               setSex={setSex}
@@ -101,28 +99,39 @@ export default function Macros({ selectedFoods, setSelectedFoods }) {
           </div>
         </>
       )}
-      <div className="responsive-container">
-        <div>
-          <SelectedGrid rows={rows} columns={cols} />
+      {!showStats && (
+        <div className="responsive-container">
+          {rows.length > 0 && (
+            <div>
+              <SelectedGrid rows={rows} columns={cols} />
+            </div>
+          )}
+          <div>
+            {rows.length > 0 && (
+              <Pie
+                fat={totalMacros["fat"]}
+                protein={totalMacros["protein"]}
+                carbs={totalMacros["carbs"]}
+              />
+            )}
+            {rows.length === 0 && (
+              <div className="title-main">
+                <h3 style={{ textAlign: "center" }}>
+                  Please make food selections in home page to see your macros
+                </h3>
+              </div>
+            )}
+            <Bars
+              fat={totalMacros["fat"]}
+              protein={totalMacros["protein"]}
+              carbs={totalMacros["carbs"]}
+              idealFat={idealMacros["fat"]}
+              idealProtein={idealMacros["protein"]}
+              idealCarbs={idealMacros["carbs"]}
+            />
+          </div>
         </div>
-        <div>
-          <Pie
-            fat={totalMacros["fat"]}
-            protein={totalMacros["protein"]}
-            carbs={totalMacros["carbs"]}
-          />
-          <Bars
-            fat={totalMacros["fat"]}
-            protein={totalMacros["protein"]}
-            carbs={totalMacros["carbs"]}
-            idealFat={idealMacros["fat"]}
-            idealProtein={idealMacros["protein"]}
-            idealCarbs={idealMacros["carbs"]}
-          />
-        </div>
-      </div>
+      )}
     </>
   );
-}
-{
 }

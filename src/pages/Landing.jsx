@@ -55,7 +55,6 @@ function Landing({ selectedFoods, setSelectedFoods }) {
       getRows(mealType, url)
         .then((rows) => {
           setRows(rows);
-          // Ensure setCols is called right after setRows in the promise chain
         })
         .then(() => setCols(getColumns(isSmallScreen)))
         .catch(console.error);
@@ -63,7 +62,6 @@ function Landing({ selectedFoods, setSelectedFoods }) {
       getHallRows(mealType, diningHall, url, selectedFoods)
         .then((rows) => {
           setRows(rows);
-          // Ensure setCols is called right after setRows in the promise chain
         })
         .then(() =>
           setCols(

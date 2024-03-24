@@ -83,14 +83,12 @@ const extractFoodNames = (mealData) => {
     }
   });
 
-  // Optional: Remove duplicates if necessary
   foodNames = [...new Set(foodNames)];
 
   return foodNames;
 };
 
 async function getRows(meal_type, url) {
-  // Explicitly return the fetch promise chain
   try {
     const response = await fetch(url);
     const data = await response.json();

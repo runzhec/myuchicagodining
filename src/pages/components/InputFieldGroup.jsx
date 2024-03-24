@@ -37,10 +37,9 @@ function ControlledRadioButtonsGroup({ sex, setSex }) {
         sx={{
           justifyContent: "flex-start",
           "& .MuiFormControlLabel-root": {
-            marginLeft: 0, // Ensures labels are left aligned
+            marginLeft: 0,
           },
           "& .MuiSvgIcon-root": {
-            // Enhances the radio button icon
             fontSize: "1.25rem",
           },
         }}
@@ -53,9 +52,6 @@ function ControlledRadioButtonsGroup({ sex, setSex }) {
 }
 
 function TextInput({ val, setVal, label }) {
-  // Initialize the weight state with a default value, for example, '0'
-
-  // Function to handle changes in the text field
   const handleChange = (event) => {
     setVal(event.target.value);
   };
@@ -89,17 +85,17 @@ export default function InputFieldGroup({
       sx={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "flex-start", // Aligns children to the left
+        alignItems: "flex-start",
         p: theme.spacing(4),
         maxWidth: { xs: "100%", sm: "50vw" }, // 100% width on smallest screens, 50vw on others
-        width: "80%", // Ensure it doesn't exceed 100% of the parent's width
+        width: "80%",
         height: "auto",
         marginLeft: theme.spacing(2),
         marginTop: theme.spacing(2),
-        backgroundColor: theme.palette.background.paper, // Adapts to theme changes
+        backgroundColor: theme.palette.background.paper,
         "& .MuiTextField-root": {
-          m: theme.spacing(1), // Margin
-          width: "calc(100% - 32px)", // Adjust width to fit content, considering padding
+          m: theme.spacing(1),
+          width: "calc(100% - 32px)",
         },
       }}
       noValidate

@@ -11,32 +11,27 @@ export default function BasicBars({
   idealProtein,
   idealCarbs,
 }) {
-  // Configuring chart settings including yAxis label
   const chartSettings = {
     width: 500,
     height: 300,
-    // Optional: Include custom styling here
-    // sx: {
-    //   [`.${axisClasses.left} .${axisClasses.label}`]: {
-    //     transform: 'translate(-20px, 0)',
-    //   },
-    // },
   };
 
   return (
-    <BarChart
-      xAxis={[
-        {
-          scaleType: "band",
-          data: ["Protein", "Fat", "Carbs"],
-          label: "All units in (g)",
-        },
-      ]}
-      series={[
-        { data: [protein, fat, carbs], label: "Current" },
-        { data: [idealProtein, idealFat, idealCarbs], label: "Ideal" },
-      ]}
-      {...chartSettings} // Spread the chart settings to apply the yAxis configuration
-    />
+    <div style={{ marginTop: "100px" }}>
+      <BarChart
+        xAxis={[
+          {
+            scaleType: "band",
+            data: ["Protein", "Fat", "Carbs"],
+            label: "All units in (g)",
+          },
+        ]}
+        series={[
+          { data: [protein, fat, carbs], label: "Current" },
+          { data: [idealProtein, idealFat, idealCarbs], label: "Ideal" },
+        ]}
+        {...chartSettings}
+      />
+    </div>
   );
 }

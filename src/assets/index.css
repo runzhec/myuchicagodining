@@ -98,7 +98,7 @@ body {
 
 .selected-grid {
   height: 60%;
-  width: 50%;
+  width: 90%;
   min-width: 364px;
   margin: 0 12px;
   margin-top: 15px;
@@ -114,16 +114,8 @@ body {
 }
 
 .responsive-container > div {
-  width: 50%;
-}
-
-.responsive-container .selected-grid {
-  height: 60%;
-  max-height: 600px; /* Example maximum height */
-  width: 50%;
-  min-width: 364px;
-  margin: 0 12px;
-  margin-top: 15px;
+  max-height: 600px;
+  overflow: auto; /* Enables scrolling when content exceeds 500px */
 }
 
 /* Responsive styling: one on top of another for screens narrower than 768px */
@@ -139,4 +131,19 @@ body {
   min-width: 364px;
   margin: 0 auto;
   margin-top: 25px;
+}
+
+button {
+  background-color: maroon; /* Maroon background */
+  color: white; /* White text */
+  border: none; /* Removes the default border */
+  padding: 10px 20px; /* Adjusts the padding for a larger click area */
+  font-size: 16px; /* Adjusts the text size */
+  border-radius: 20px; /* Rounds the corners of the button */
+  cursor: pointer; /* Changes the mouse cursor to a pointer on hover */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+button:hover {
+  background-color: darkred; /* Darker maroon shade on hover for a subtle effect */
 }

@@ -97,7 +97,7 @@ body {
 }
 
 .selected-grid {
-  height: 60%;
+  height: 50%;
   width: 90%;
   min-width: 364px;
   margin: 0 12px;
@@ -113,7 +113,7 @@ body {
 }
 
 .responsive-container > div {
-  max-height: 600px;
+  max-height: 565px;
   overflow: auto; /* Enables scrolling when content exceeds 500px */
 }
 
@@ -133,14 +133,14 @@ body {
 }
 
 button {
-  background-color: maroon; /* Maroon background */
-  color: white; /* White text */
-  border: none; /* Removes the default border */
-  padding: 10px 20px; /* Adjusts the padding for a larger click area */
-  font-size: 16px; /* Adjusts the text size */
-  border-radius: 20px; /* Rounds the corners of the button */
-  cursor: pointer; /* Changes the mouse cursor to a pointer on hover */
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  background-color: maroon;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 button:hover {
@@ -148,14 +148,14 @@ button:hover {
 }
 
 .circular-div {
-  width: 200px; /* Adjust based on your needs */
-  height: 30px; /* This should be equal to the width to make a perfect circle */
-  border-radius: 20px; /* Rounds the corners of the button */
-  background-color: maroon; /* Background color of the div */
-  color: white; /* Text color */
+  width: 200px;
+  height: 30px;
+  border-radius: 20px;
+  background-color: maroon;
+  color: white;
   display: flex;
-  justify-content: center; /* Horizontally center the content */
-  align-items: center; /* Vertically center the content */
+  justify-content: center;
+  align-items: center;
   text-align: center;
   font-family: "Nunito", sans-serif;
 }

@@ -45,10 +45,11 @@ function calculateNutrientIntake(age, weight, heightFt, heightIn, sex) {
   };
 }
 
-function TotalMacrosDisplay({ macro, quant }) {
+function TotalMacrosDisplay({ macro, quant, units }) {
   return (
     <div class="circular-div">
       Total {macro}: {quant}
+      {units}
     </div>
   );
 }
@@ -111,7 +112,7 @@ export default function Macros({ selectedFoods, setSelectedFoods }) {
         <>
           <div
             className="responsive-container"
-            style={{ marginBottom: "50px" }}
+            style={{ marginBottom: "40px" }}
           >
             <TotalMacrosDisplay
               macro={"Calories"}
@@ -120,9 +121,18 @@ export default function Macros({ selectedFoods, setSelectedFoods }) {
             <TotalMacrosDisplay
               macro={"Protein"}
               quant={totalMacros["protein"]}
+              units={"g"}
             />
-            <TotalMacrosDisplay macro={"Fat"} quant={totalMacros["fat"]} />
-            <TotalMacrosDisplay macro={"Carbs"} quant={totalMacros["carbs"]} />
+            <TotalMacrosDisplay
+              macro={"Fat"}
+              quant={totalMacros["fat"]}
+              units={"g"}
+            />
+            <TotalMacrosDisplay
+              macro={"Carbs"}
+              quant={totalMacros["carbs"]}
+              units={"g"}
+            />
           </div>
           <div className="responsive-container">
             {rows.length > 0 && (

@@ -13,6 +13,16 @@ import {
 import TextField from "@mui/material/TextField";
 import FutureGrid from "./components/FutureGrid.jsx";
 import fetchFutureAvailability from "./utils/predictPopulateGrid.js";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+
+function CircularIndeterminate() {
+  return (
+    <Box sx={{ display: "flex", marginTop: "200px" }}>
+      <CircularProgress />
+    </Box>
+  );
+}
 
 export default function Predict() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -62,9 +72,9 @@ export default function Predict() {
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
-    if (e.target.value.trim() === "") {
-      setAvailability([]);
-    }
+    //if (e.target.value.trim() === "") {
+    setAvailability([]);
+    //}
     setShowSearchResults(true); // Show search results while typing
   };
 
@@ -150,9 +160,13 @@ export default function Predict() {
               </List>
             </Paper>
           )}
-          {availability.length > 0 && (
-            <FutureGrid rows={availability} columns={columns} />
-          )}
+          {!searchTerm &&
+            !showSearchResults &&
+            (availability.length > 0 ? (
+              <FutureGrid rows={availability} columns={columns} />
+            ) : (
+              <CircularIndeterminate />
+            ))}
         </div>
       </div>
     </ThemeProvider>

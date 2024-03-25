@@ -4,6 +4,7 @@ https://myuofcdining.net/
 
 # Hackathon Project: UofC-Dining
 
+1st palce in data analytics category @ uncommon hacks
 https://devpost.com/software/my-uofc-dining
 
 ## Intro

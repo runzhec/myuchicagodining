@@ -4,11 +4,11 @@ const uniqueMeals = [
   " Sliced Green Onions",
   "2% Greek Plain Yogurt",
   "3 Cheese Pizza",
-  "3/8\" French Fries, Fried",
-  "4.5\" White Corn Tortilla",
-  "6\" Corn Tortilla",
-  "6\" Flour Tortilla",
-  "6\" Whole Wheat Flour Tortilla",
+  '3/8" French Fries, Fried',
+  '4.5" White Corn Tortilla',
+  '6" Corn Tortilla',
+  '6" Flour Tortilla',
+  '6" Whole Wheat Flour Tortilla',
   "Acorn Squash",
   "Acorn Squash and Vegetable Saute",
   "Acorn Squash with Cider Drizzle",
@@ -54,7 +54,7 @@ const uniqueMeals = [
   "BBQ Seitan",
   "BBQ Shredded Beef",
   "BBQ Squash Ribs",
-  "BBQ Tofu \"Steak\"",
+  'BBQ Tofu "Steak"',
   "Baby Spinach",
   "Bacon",
   "Bacon Charro Beans",
@@ -1368,7 +1368,7 @@ const uniqueMeals = [
   "Vanilla Pudding Parfait",
   "Vanilla Quick Bread",
   "Vanilla and Sprinkle Donut",
-  "Vegan \"Sour Cream\"",
+  'Vegan "Sour Cream"',
   "Vegan Apple Coconut Crisp",
   "Vegan Apple Leek Soup, Coconut",
   "Vegan Apple, Oat, Coconut Muffin",
@@ -1492,7 +1492,7 @@ const uniqueMeals = [
   "tofu and black bean scramble",
   "tortilla chips",
   "tri color tortilla chips",
-  "wild mushroom risotto"
+  "wild mushroom risotto",
 ];
 
 export default uniqueMeals;

@@ -29,7 +29,7 @@ const initalMealType = () => {
   return "breakfast";
 };
 
-function Landing() {
+function Landing({ selectedFoods, setSelectedFoods }) {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -46,32 +46,61 @@ function Landing() {
     date.getMonth() + 1
   }-${date.getDate()}`;
 
-  const url = `json/${formattedDate}.json`;
+  //const url = `https://myuofcdining.net/json/${formattedDate}.json`;
+  const url = `/json/${formattedDate}.json`;
+  console.log(selectedFoods);
 
   useEffect(() => {
     if (diningHall === "All") {
-      setCols(getColumns(isSmallScreen));
-      getRows(mealType, url).then(setRows).catch(console.error);
+      getRows(mealType, url)
+        .then((rows) => {
+          setRows(rows);
+        })
+        .then(() => setCols(getColumns(isSmallScreen)))
+        .catch(console.error);
     } else {
-      setCols(getHallColumns(isSmallScreen));
-      getHallRows(mealType, diningHall, url).then(setRows).catch(console.error);
+      getHallRows(mealType, diningHall, url, selectedFoods)
+        .then((rows) => {
+          setRows(rows);
+        })
+        .then(() =>
+          setCols(
+            getHallColumns(
+              isSmallScreen,
+              selectedFoods,
+              setSelectedFoods,
+              mealType,
+              diningHall
+            )
+          )
+        )
+        .catch(console.error);
     }
-  }, [mealType, diningHall, isSmallScreen, url]);
+  }, [
+    mealType,
+    diningHall,
+    isSmallScreen,
+    url,
+    selectedFoods,
+    setSelectedFoods,
+  ]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <NavBar />
-      <div className="title-main">
-        <h1>Compare UChicago Dinning Halls</h1>
-      </div>
-      <StyledToggleButton mealType={mealType} setMealType={setMealType} />
-      <ComparisonGrid
-        rows={rows}
-        columns={cols}
-        diningHall={diningHall}
-        setDiningHall={setDiningHall}
-      />
-    </ThemeProvider>
+    <>
+      <ThemeProvider theme={theme}>
+        <NavBar />
+        <div className="title-main">
+          <h1>Compare UChicago Dinning Halls</h1>
+        </div>
+        <StyledToggleButton mealType={mealType} setMealType={setMealType} />
+        <ComparisonGrid
+          rows={rows}
+          columns={cols}
+          diningHall={diningHall}
+          setDiningHall={setDiningHall}
+        />
+      </ThemeProvider>
+    </>
   );
 }
 

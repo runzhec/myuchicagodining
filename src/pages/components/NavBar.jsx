@@ -15,7 +15,6 @@ function NavBar() {
         <button onClick={() => redirectToAnotherPage("/predict")}>
           Predict
         </button>
-        <button onClick={() => redirectToAnotherPage("/make")}>Make</button>
       </div>
     </>
   );

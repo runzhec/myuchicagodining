@@ -13,3 +13,7 @@ Currently, UChicago Dining provides one days worth of meal information. It is un
 ## How we built it
 
 We used python for querying UChicago's dining API's to create jsons to represent the food offerings of each day. We then used the created jsons, material ui library, and react to create the frontend. We used a personal ubuntu apache webserver to host.
+
+## Future updates
+
+We hope to build a flask or express backend api to store the jsons to improve website load time as well as allow for user account creation. We also hope to improve the frontend to include more macros visualization 

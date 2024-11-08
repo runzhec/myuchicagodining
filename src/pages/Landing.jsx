@@ -90,7 +90,7 @@ function Landing({ selectedFoods, setSelectedFoods }) {
       <ThemeProvider theme={theme}>
         <NavBar />
         <div className="title-main">
-          <h1>Compare UChicago Dinning Halls</h1>
+          <h1>Compare UChicago Dining Halls</h1>
         </div>
         <StyledToggleButton mealType={mealType} setMealType={setMealType} />
         <ComparisonGrid

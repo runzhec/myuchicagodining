@@ -12,9 +12,9 @@ function NavBar() {
       <div className="maroon-bar">
         <button onClick={() => redirectToAnotherPage("/landing")}>Home</button>
         <button onClick={() => redirectToAnotherPage("/macros")}>Macros</button>
-        <button onClick={() => redirectToAnotherPage("/predict")}>
+        {/* <button onClick={() => redirectToAnotherPage("/predict")}>
           Predict
-        </button>
+        </button> */}
       </div>
     </>
   );
